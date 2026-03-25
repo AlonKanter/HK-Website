@@ -109,71 +109,35 @@ export default function ContactPage() {
       </section>
 
       <section className="bg-brand-soft/35">
-        <div className="shell section-gap grid gap-10 lg:grid-cols-[1.08fr_0.92fr]">
-          <div>
-            <SectionEyebrow>Areas de consulta</SectionEyebrow>
-            <h2 className="mt-6 max-w-[14ch] font-display text-4xl leading-[0.95] tracking-[-0.045em] text-ink [text-wrap:balance] sm:text-5xl">
-              Podemos trabajar sobre cualquiera de estas lineas.
-            </h2>
-
-            <div className="mt-8 grid gap-3">
-              {businessLines.map((line) => (
-                <Link
-                  key={line.slug}
-                  href={`/lineas-de-negocio/${line.slug}`}
-                  className="surface-card rounded-[1.75rem] p-5 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/25"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-deep/80">
-                    {line.kicker}
-                  </p>
-                  <h3 className="mt-3 font-display text-2xl leading-tight tracking-[-0.04em] text-ink">
-                    {line.label}
-                  </h3>
-                  <p className="mt-3 text-base leading-7 text-ink-soft">{line.summary}</p>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div className="surface-card rounded-[2.25rem] p-6 sm:p-8">
-            <SectionEyebrow>Canales directos</SectionEyebrow>
-            <div className="mt-6 space-y-6">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-deep/80">
-                  Email
+        <div className="shell section-gap">
+          <div className="surface-card rounded-[2.25rem] px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+              <div className="max-w-2xl">
+                <SectionEyebrow>Consultas</SectionEyebrow>
+                <h2 className="mt-6 max-w-[15ch] font-display text-4xl leading-[0.95] tracking-[-0.045em] text-ink [text-wrap:balance] sm:text-5xl">
+                  Podemos empezar desde una necesidad puntual o desde un proyecto integral.
+                </h2>
+                <p className="mt-5 text-lg leading-8 text-ink-soft">
+                  Trabajamos sobre accesos, inspeccion, monitoreo, auditorias y despliegues
+                  operativos, tanto en instalaciones nuevas como en sistemas ya existentes.
                 </p>
-                <a
-                  href={`mailto:${contactDetails.email}`}
-                  className="mt-3 block font-display text-2xl leading-tight tracking-[-0.04em] text-ink transition-colors duration-200 hover:text-brand-deep"
-                >
-                  {contactDetails.email}
-                </a>
               </div>
 
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-deep/80">
-                  Telefono
-                </p>
-                <a
-                  href={contactDetails.phoneHref}
-                  className="mt-3 block font-display text-2xl leading-tight tracking-[-0.04em] text-ink transition-colors duration-200 hover:text-brand-deep"
-                >
-                  {contactDetails.phone}
-                </a>
-              </div>
-
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-deep/80">
-                  Oficina
-                </p>
-                <a
-                  href={contactDetails.mapUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-3 block text-base leading-7 text-ink-soft transition-colors duration-200 hover:text-ink"
-                >
-                  {contactDetails.address}
-                </a>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {businessLines.map((line) => (
+                  <Link
+                    key={line.slug}
+                    href={`/lineas-de-negocio/${line.slug}`}
+                    className="rounded-[1.5rem] border border-line bg-white px-5 py-5 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/25 hover:bg-brand-soft/35"
+                  >
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-deep/80">
+                      {line.kicker}
+                    </p>
+                    <h3 className="mt-3 font-display text-2xl leading-tight tracking-[-0.04em] text-ink">
+                      {line.label}
+                    </h3>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

@@ -50,6 +50,11 @@
     text-decoration: none;
   }
 
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   img {
     display: block;
     max-width: 100%;

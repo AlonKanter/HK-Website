@@ -13,8 +13,8 @@ export default function ClientsPage() {
   return (
     <main>
       <section>
-        <div className="shell section-gap grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-          <div className="max-w-2xl">
+        <div className="shell section-gap">
+          <div className="max-w-3xl">
             <SectionEyebrow>Clientes</SectionEyebrow>
             <h1 className="mt-6 max-w-[13ch] font-display text-5xl leading-[0.92] tracking-[-0.05em] text-ink [text-wrap:balance] sm:text-6xl lg:text-[5rem]">
               Clientes que confian en HK Systems.
@@ -22,16 +22,6 @@ export default function ClientsPage() {
             <p className="mt-6 text-lg leading-8 text-ink-soft">
               Experiencia junto a fuerzas federales, organismos publicos, municipios, servicios
               penitenciarios y companias privadas de distintos sectores.
-            </p>
-          </div>
-
-          <div className="surface-card rounded-[2rem] p-6 sm:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-deep/80">
-              Alcance
-            </p>
-            <p className="mt-4 font-display text-3xl leading-tight tracking-[-0.04em] text-ink sm:text-4xl">
-              Organismos federales, entes gubernamentales, servicios penitenciarios, clientes
-              privados, depositos fiscales y entes municipales.
             </p>
           </div>
         </div>

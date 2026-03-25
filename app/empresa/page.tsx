@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 import { SectionEyebrow } from "@/components/section-eyebrow";
-import { companyPillars, companyPrinciples, contactDetails, sectors, siteImagery } from "@/lib/site-data";
+import { companyModel, companyPillars, companyPrinciples, siteImagery } from "@/lib/site-data";
 
 const operatingStages = [
   {
@@ -140,7 +140,7 @@ export default function CompanyPage() {
       </section>
 
       <section>
-        <div className="shell section-gap grid gap-10 lg:grid-cols-[0.84fr_1.16fr]">
+        <div className="shell section-gap grid gap-10 lg:grid-cols-[0.82fr_1.18fr]">
           <div>
             <SectionEyebrow>Principios de trabajo</SectionEyebrow>
             <h2 className="mt-6 max-w-[15ch] font-display text-4xl leading-[0.95] tracking-[-0.045em] text-ink [text-wrap:balance] sm:text-5xl">
@@ -158,61 +158,21 @@ export default function CompanyPage() {
           </div>
 
           <div>
-            <SectionEyebrow>Sectores atendidos</SectionEyebrow>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              {sectors.map((sector) => (
-                <article key={sector.title} className="surface-card rounded-[2rem] p-6">
+            <SectionEyebrow>Modelo de negocio</SectionEyebrow>
+            <h2 className="mt-6 max-w-[15ch] font-display text-4xl leading-[0.95] tracking-[-0.045em] text-ink [text-wrap:balance] sm:text-5xl">
+              Integracion, provision tecnologica y consultoria dentro de una misma estructura.
+            </h2>
+
+            <div className="mt-8 grid gap-4">
+              {companyModel.map((item) => (
+                <article key={item.title} className="surface-card rounded-[2rem] p-6 sm:p-7">
                   <h3 className="font-display text-2xl leading-tight tracking-[-0.04em] text-ink">
-                    {sector.title}
+                    {item.title}
                   </h3>
-                  <p className="mt-3 text-base leading-7 text-ink-soft">{sector.description}</p>
+                  <p className="mt-4 text-base leading-7 text-ink-soft">{item.description}</p>
                 </article>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div className="shell section-gap pt-0">
-          <div className="grid gap-4 md:grid-cols-3">
-            <a
-              href={`mailto:${contactDetails.email}`}
-              className="surface-card rounded-[2rem] p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/25"
-            >
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-deep/80">
-                Email
-              </p>
-              <p className="mt-4 font-display text-2xl leading-tight tracking-[-0.04em] text-ink">
-                {contactDetails.email}
-              </p>
-            </a>
-
-            <a
-              href={contactDetails.phoneHref}
-              className="surface-card rounded-[2rem] p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/25"
-            >
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-deep/80">
-                Telefono
-              </p>
-              <p className="mt-4 font-display text-2xl leading-tight tracking-[-0.04em] text-ink">
-                {contactDetails.phone}
-              </p>
-            </a>
-
-            <a
-              href={contactDetails.mapUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="surface-card rounded-[2rem] p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand/25"
-            >
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-deep/80">
-                Ubicacion
-              </p>
-              <p className="mt-4 font-display text-2xl leading-tight tracking-[-0.04em] text-ink">
-                {contactDetails.address}
-              </p>
-            </a>
           </div>
         </div>
       </section>

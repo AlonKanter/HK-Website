@@ -551,23 +551,6 @@ export const businessLines: BusinessLine[] = [
   }
 ];
 
-const previewNotes: Record<BusinessLine["slug"], string> = {
-  biometria: "Identidad, trazabilidad y control de accesos.",
-  "inspeccion-no-intrusiva": "Deteccion temprana sin frenar la operacion.",
-  "seguridad-electronica": "Visibilidad continua y respuesta coordinada.",
-  "otros-servicios": "Consultoria, despliegue y acompanamiento especializado."
-};
-
-export const businessLinePreviewSlides = businessLines.map((line) => ({
-  eyebrow: line.label,
-  title: line.kicker,
-  description: line.summary,
-  placeholder: line.label,
-  note: previewNotes[line.slug],
-  image: line.heroAsset,
-  tone: "soft" as const
-}));
-
 export function getBusinessLine(slug: string) {
   return businessLines.find((line) => line.slug === slug);
 }

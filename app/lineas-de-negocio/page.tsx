@@ -66,9 +66,6 @@ export default function BusinessLinesPage() {
                       className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#10242f]/45 via-transparent to-transparent" />
-                    <span className="absolute left-5 top-5 rounded-full bg-white/85 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-brand-deep backdrop-blur">
-                      Solucion {String(index + 1).padStart(2, "0")}
-                    </span>
                   </div>
                 </div>
 
@@ -101,34 +98,6 @@ export default function BusinessLinesPage() {
               </div>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section>
-        <div className="shell section-gap pt-0">
-          <div className="surface-card rounded-[2.25rem] px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
-            <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
-              <div className="max-w-2xl">
-                <SectionEyebrow>Enfoque operativo</SectionEyebrow>
-                <h2 className="mt-6 max-w-[14ch] font-display text-4xl leading-[0.95] tracking-[-0.045em] text-ink [text-wrap:balance] sm:text-5xl">
-                  Tecnologia, criterio operativo y acompanamiento continuo en una misma propuesta.
-                </h2>
-                <p className="mt-5 text-lg leading-8 text-ink-soft">
-                  HK Systems adapta el alcance a cada contexto sin perder integracion, trazabilidad
-                  ni continuidad del servicio.
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-3">
-                <Link
-                  href="/contacto"
-                  className="inline-flex min-h-12 items-center justify-center rounded-full bg-brand px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-strong"
-                >
-                  Solicitar una reunion
-                </Link>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </main>
