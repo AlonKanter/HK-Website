@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { AutoplayVideo } from "@/components/autoplay-video";
 import { SectionEyebrow } from "@/components/section-eyebrow";
 import { ShowcaseSlider } from "@/components/showcase-slider";
 import { businessLines, getBusinessLine, inspectionVideos } from "@/lib/site-data";
@@ -134,15 +135,14 @@ export default async function BusinessLineDetailPage({
 
             <div className="surface-card overflow-hidden rounded-[2rem] p-3 sm:p-4">
               <div className="overflow-hidden rounded-[1.5rem]">
-                <video
-                  controls
-                  playsInline
-                  preload="metadata"
+                <AutoplayVideo
+                  src={inspectionVideos.detail.src}
                   poster={inspectionVideos.detail.poster}
+                  controls
+                  autoPlay={false}
+                  preload="metadata"
                   className="h-auto w-full"
-                >
-                  <source src={inspectionVideos.detail.src} type="video/mp4" />
-                </video>
+                />
               </div>
             </div>
           </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import { AutoplayVideo } from "@/components/autoplay-video";
 import { SectionEyebrow } from "@/components/section-eyebrow";
 import { businessLines, contactDetails, inspectionVideos, sectors } from "@/lib/site-data";
 
@@ -94,17 +95,12 @@ export default function HomePage() {
 
             <div className="surface-card overflow-hidden rounded-[2rem] p-3 sm:p-4">
               <div className="relative aspect-[16/10] overflow-hidden rounded-[1.5rem]">
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
+                <AutoplayVideo
+                  src={inspectionVideos.home.src}
                   poster={inspectionVideos.home.poster}
+                  preload="auto"
                   className="h-full w-full object-cover"
-                >
-                  <source src={inspectionVideos.home.src} type="video/mp4" />
-                </video>
+                />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0f2d37]/45 via-transparent to-transparent" />
                 <span className="absolute left-4 top-4 rounded-full bg-white/85 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-brand-deep backdrop-blur">
                   {inspectionVideos.home.title}

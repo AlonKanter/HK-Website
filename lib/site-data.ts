@@ -73,7 +73,7 @@ export const siteImagery = {
 
 export const inspectionVideos = {
   home: {
-    src: "/videos/rapiscan-920ct.mp4",
+    src: "/videos/rapiscan-920ct-web.mp4",
     poster: "/stock/luggage-inspection.jpg",
     eyebrow: "Checkpoint CT",
     title: "Rapiscan 920CT",
@@ -81,7 +81,7 @@ export const inspectionVideos = {
       "Inspeccion no intrusiva para equipajes y puntos de control de alta demanda."
   },
   detail: {
-    src: "/videos/rapiscan-orion-metor-900m.mp4",
+    src: "/videos/rapiscan-orion-metor-900m-web.mp4",
     poster: "/stock/warehouse-inspection.jpg",
     eyebrow: "Rayos X",
     title: "Introducing the new Orion Metor 900M",
