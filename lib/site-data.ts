@@ -73,7 +73,8 @@ export const siteImagery = {
 
 export const inspectionVideos = {
   home: {
-    src: "/videos/rapiscan-920ct-web.mp4",
+    teaserSrc: "/videos/rapiscan-920ct-hero-teaser.mp4",
+    fullSrc: "/videos/rapiscan-920ct-full-web.mp4",
     poster: "/stock/luggage-inspection.jpg",
     eyebrow: "Checkpoint CT",
     title: "Rapiscan 920CT",

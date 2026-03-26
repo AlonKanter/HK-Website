@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import { AutoplayVideo } from "@/components/autoplay-video";
+import { InspectionHeroVideo } from "@/components/inspection-hero-video";
 import { SectionEyebrow } from "@/components/section-eyebrow";
 import { businessLines, contactDetails, inspectionVideos, sectors } from "@/lib/site-data";
 
@@ -29,6 +29,21 @@ const marketTags = [
   "Checkpoint CT",
   "Inspeccion de cargas",
   "Proteccion fronteriza"
+];
+
+const inspectionCoverage = [
+  {
+    title: "Equipajes y paqueteria",
+    description: "Puntos de control con deteccion precisa para accesos institucionales y nodos de alta exigencia."
+  },
+  {
+    title: "Personas, vehiculos y cargas",
+    description: "Cobertura no intrusiva para flujos complejos donde seguridad y continuidad deben convivir."
+  },
+  {
+    title: "Radiacion y trazas",
+    description: "Capas complementarias de deteccion para entornos sensibles, fronteras y activos estrategicos."
+  }
 ];
 
 const featuredInspectionLine =
@@ -95,30 +110,44 @@ export default function HomePage() {
 
             <div className="surface-card overflow-hidden rounded-[2rem] p-3 sm:p-4">
               <div className="relative aspect-[16/10] overflow-hidden rounded-[1.5rem]">
-                <AutoplayVideo
-                  src={inspectionVideos.home.src}
+                <InspectionHeroVideo
+                  teaserSrc={inspectionVideos.home.teaserSrc}
+                  fullSrc={inspectionVideos.home.fullSrc}
                   poster={inspectionVideos.home.poster}
-                  preload="auto"
-                  className="h-full w-full object-cover"
+                  className="absolute inset-0"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0f2d37]/45 via-transparent to-transparent" />
-                <span className="absolute left-4 top-4 rounded-full bg-white/85 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-brand-deep backdrop-blur">
-                  {inspectionVideos.home.title}
-                </span>
+                <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4">
+                  <div>
+                    <span className="rounded-full bg-white/85 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-brand-deep backdrop-blur">
+                      {inspectionVideos.home.title}
+                    </span>
+                    <p className="mt-3 max-w-[18rem] font-display text-2xl leading-tight tracking-[-0.04em] text-white sm:text-3xl">
+                      {inspectionVideos.home.description}
+                    </p>
+                  </div>
+                  <span className="hidden rounded-full border border-white/20 bg-[#0f2d37]/45 px-3 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white/80 backdrop-blur sm:inline-flex">
+                    Secuencia prioritaria
+                  </span>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
 
-            <div className="surface-card absolute inset-x-5 -bottom-6 rounded-[1.6rem] px-5 py-4 sm:inset-x-auto sm:bottom-5 sm:right-5 sm:w-[18rem]">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-deep/80">
-                Cobertura prioritaria
-              </p>
-              <div className="mt-3 grid gap-2 text-sm leading-6 text-ink-soft">
-                <p>Rayos X para equipajes y paqueteria</p>
-                <p>Inspeccion de personas</p>
-                <p>Revision de vehiculos y cargas</p>
-                <p>Deteccion de radiacion y trazas</p>
-              </div>
-            </div>
+        <div className="shell -mt-6 pb-2 sm:-mt-2">
+          <div className="grid gap-4 md:grid-cols-3">
+            {inspectionCoverage.map((item) => (
+              <article key={item.title} className="surface-card rounded-[1.8rem] p-5 sm:p-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-deep/80">
+                  Cobertura prioritaria
+                </p>
+                <h2 className="mt-3 font-display text-2xl leading-tight tracking-[-0.04em] text-ink">
+                  {item.title}
+                </h2>
+                <p className="mt-3 text-sm leading-6 text-ink-soft">{item.description}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -165,43 +194,61 @@ export default function HomePage() {
 
           <div className="mt-10 grid gap-4 lg:grid-cols-2">
             {businessLines.map((line) => (
-              <article key={line.slug} className="surface-card overflow-hidden rounded-[2rem] p-3">
-                <div className="relative aspect-[16/10] overflow-hidden rounded-[1.4rem]">
-                  <Image
-                    src={line.heroAsset}
-                    alt={line.heroAlt}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 38rem"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f2d37]/45 via-transparent to-transparent" />
-                  <span className="absolute left-4 top-4 rounded-full bg-white/85 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-brand-deep backdrop-blur">
-                    {line.kicker}
-                  </span>
-                </div>
+              <article
+                key={line.slug}
+                className={`surface-card overflow-hidden rounded-[2rem] p-3 ${
+                  line.slug === "inspeccion-no-intrusiva" ? "lg:col-span-2" : ""
+                }`}
+              >
+                <div
+                  className={`${
+                    line.slug === "inspeccion-no-intrusiva"
+                      ? "grid gap-5 lg:grid-cols-[1.08fr_0.92fr] lg:items-center"
+                      : ""
+                  }`}
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-[1.4rem]">
+                    <Image
+                      src={line.heroAsset}
+                      alt={line.heroAlt}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 38rem"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f2d37]/45 via-transparent to-transparent" />
+                    <span className="absolute left-4 top-4 rounded-full bg-white/85 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-brand-deep backdrop-blur">
+                      {line.kicker}
+                    </span>
+                  </div>
 
-                <div className="px-3 pb-3 pt-5">
-                  <h3 className="font-display text-3xl leading-tight tracking-[-0.04em] text-ink">
-                    {line.label}
-                  </h3>
-                  <p className="mt-4 text-base leading-7 text-ink-soft">{line.summary}</p>
+                  <div className="px-3 pb-3 pt-5">
+                    {line.slug === "inspeccion-no-intrusiva" ? (
+                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand">
+                        Prioridad central
+                      </p>
+                    ) : null}
+                    <h3 className="font-display text-3xl leading-tight tracking-[-0.04em] text-ink">
+                      {line.label}
+                    </h3>
+                    <p className="mt-4 text-base leading-7 text-ink-soft">{line.summary}</p>
 
-                  <ul className="mt-5 space-y-3">
-                    {line.applications.slice(0, 2).map((item) => (
-                      <li key={item} className="flex items-start gap-3 text-sm leading-6 text-ink-soft">
-                        <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand" aria-hidden="true" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                    <ul className="mt-5 space-y-3">
+                      {line.applications.slice(0, line.slug === "inspeccion-no-intrusiva" ? 3 : 2).map((item) => (
+                        <li key={item} className="flex items-start gap-3 text-sm leading-6 text-ink-soft">
+                          <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand" aria-hidden="true" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
 
-                  <Link
-                    href={`/lineas-de-negocio/${line.slug}`}
-                    className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-deep transition-colors duration-200 hover:text-brand"
-                  >
-                    Ver solucion
-                    <span aria-hidden="true">&rarr;</span>
-                  </Link>
+                    <Link
+                      href={`/lineas-de-negocio/${line.slug}`}
+                      className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-deep transition-colors duration-200 hover:text-brand"
+                    >
+                      Ver solucion
+                      <span aria-hidden="true">&rarr;</span>
+                    </Link>
+                  </div>
                 </div>
               </article>
             ))}
