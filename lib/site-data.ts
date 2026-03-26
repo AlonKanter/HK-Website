@@ -71,6 +71,25 @@ export const siteImagery = {
   }
 } as const;
 
+export const inspectionVideos = {
+  home: {
+    src: "/videos/rapiscan-920ct.mp4",
+    poster: "/stock/luggage-inspection.jpg",
+    eyebrow: "Checkpoint CT",
+    title: "Rapiscan 920CT",
+    description:
+      "Inspeccion no intrusiva para equipajes y puntos de control de alta demanda."
+  },
+  detail: {
+    src: "/videos/rapiscan-orion-metor-900m.mp4",
+    poster: "/stock/warehouse-inspection.jpg",
+    eyebrow: "Rayos X",
+    title: "Introducing the new Orion Metor 900M",
+    description:
+      "Tecnologia de inspeccion avanzada para operaciones que exigen deteccion temprana y continuidad operativa."
+  }
+} as const;
+
 // To add a client later, append an item like:
 // { name: "Nombre del cliente", logo: "/client-logos/nombre-del-logo.svg", alt: "Logo de Nombre del cliente" }
 export const clientCategories: ClientCategory[] = [
@@ -281,7 +300,7 @@ export const sectors = [
   }
 ];
 
-export const businessLines: BusinessLine[] = [
+const businessLineCollection: BusinessLine[] = [
   {
     slug: "biometria",
     label: "Biometria",
@@ -551,6 +570,23 @@ export const businessLines: BusinessLine[] = [
   }
 ];
 
+const businessLinePriority = [
+  "inspeccion-no-intrusiva",
+  "biometria",
+  "seguridad-electronica",
+  "otros-servicios"
+] as const;
+
+export const businessLines = businessLinePriority.map((slug) => {
+  const line = businessLineCollection.find((item) => item.slug === slug);
+
+  if (!line) {
+    throw new Error(`Business line not found for slug: ${slug}`);
+  }
+
+  return line;
+});
+
 export function getBusinessLine(slug: string) {
-  return businessLines.find((line) => line.slug === slug);
+  return businessLineCollection.find((line) => line.slug === slug);
 }

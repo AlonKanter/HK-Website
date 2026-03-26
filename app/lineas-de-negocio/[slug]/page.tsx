@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 
 import { SectionEyebrow } from "@/components/section-eyebrow";
 import { ShowcaseSlider } from "@/components/showcase-slider";
-import { businessLines, getBusinessLine } from "@/lib/site-data";
+import { businessLines, getBusinessLine, inspectionVideos } from "@/lib/site-data";
 
 type BusinessLinePageProps = {
   params: Promise<{
@@ -46,6 +46,8 @@ export default async function BusinessLineDetailPage({
   if (!line) {
     notFound();
   }
+
+  const isInspectionLine = line.slug === "inspeccion-no-intrusiva";
 
   return (
     <main>
@@ -102,7 +104,52 @@ export default async function BusinessLineDetailPage({
         </div>
       </section>
 
-      <section className="border-t border-line/70">
+      {isInspectionLine ? (
+        <section className="border-t border-line/70">
+          <div className="shell section-gap grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+            <div className="max-w-2xl">
+              <SectionEyebrow>{inspectionVideos.detail.eyebrow}</SectionEyebrow>
+              <h2 className="mt-6 max-w-[13ch] font-display text-4xl leading-[0.95] tracking-[-0.045em] text-ink [text-wrap:balance] sm:text-5xl">
+                {inspectionVideos.detail.title}
+              </h2>
+              <p className="mt-5 text-lg leading-8 text-ink-soft">
+                {inspectionVideos.detail.description}
+              </p>
+
+              <ul className="mt-6 space-y-3">
+                <li className="flex items-start gap-3 text-base leading-7 text-ink-soft">
+                  <span className="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-brand" aria-hidden="true" />
+                  <span>Aplicacion en accesos, edificios institucionales, fronteras y nodos logisticos.</span>
+                </li>
+                <li className="flex items-start gap-3 text-base leading-7 text-ink-soft">
+                  <span className="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-brand" aria-hidden="true" />
+                  <span>Complemento ideal para control de equipajes, personas, vehiculos y mercaderias.</span>
+                </li>
+                <li className="flex items-start gap-3 text-base leading-7 text-ink-soft">
+                  <span className="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-brand" aria-hidden="true" />
+                  <span>Enfoque en deteccion temprana sin perder continuidad operativa.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="surface-card overflow-hidden rounded-[2rem] p-3 sm:p-4">
+              <div className="overflow-hidden rounded-[1.5rem]">
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster={inspectionVideos.detail.poster}
+                  className="h-auto w-full"
+                >
+                  <source src={inspectionVideos.detail.src} type="video/mp4" />
+                </video>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      <section className={isInspectionLine ? "" : "border-t border-line/70"}>
         <div className="shell section-gap">
           <div className="max-w-3xl">
             <SectionEyebrow>Escenarios operativos</SectionEyebrow>

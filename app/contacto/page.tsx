@@ -118,8 +118,9 @@ export default function ContactPage() {
                   Podemos empezar desde una necesidad puntual o desde un proyecto integral.
                 </h2>
                 <p className="mt-5 text-lg leading-8 text-ink-soft">
-                  Trabajamos sobre accesos, inspeccion, monitoreo, auditorias y despliegues
-                  operativos, tanto en instalaciones nuevas como en sistemas ya existentes.
+                  Trabajamos primero sobre Rayos X e inspeccion no intrusiva, y luego sobre
+                  accesos, monitoreo, auditorias y despliegues operativos en sistemas nuevos o ya
+                  existentes.
                 </p>
               </div>
 

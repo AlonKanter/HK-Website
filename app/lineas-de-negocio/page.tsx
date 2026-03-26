@@ -8,7 +8,7 @@ import { businessLines } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "Lineas de negocio",
   description:
-    "Biometria, inspeccion no intrusiva, seguridad electronica y servicios especializados de HK Systems."
+    "Inspeccion no intrusiva, biometria, seguridad electronica y servicios especializados de HK Systems."
 };
 
 export default function BusinessLinesPage() {
@@ -19,21 +19,21 @@ export default function BusinessLinesPage() {
           <div className="max-w-2xl">
             <SectionEyebrow>Lineas de negocio</SectionEyebrow>
             <h1 className="mt-6 max-w-[13ch] font-display text-5xl leading-[0.92] tracking-[-0.05em] text-ink [text-wrap:balance] sm:text-6xl lg:text-[5rem]">
-              Soluciones especializadas para riesgos, accesos, monitoreo y continuidad operativa.
+              Inspeccion no intrusiva, biometria, monitoreo y continuidad operativa.
             </h1>
             <p className="mt-6 text-lg leading-8 text-ink-soft">
-              Cada linea responde a necesidades concretas de organismos publicos, infraestructura
-              critica, industria, logistica y companias privadas.
+              La propuesta prioriza Rayos X, control de equipajes, personas, vehiculos y cargas, y
+              luego escala hacia identidad, video vigilancia y servicios especializados.
             </p>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2">
             <div className="surface-card rounded-[2rem] p-6">
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-deep/80">
-                Alcance
+                Prioridad
               </p>
               <p className="mt-3 font-display text-2xl leading-tight text-ink">
-                Diseno, implementacion, integracion y soporte continuo
+                Rayos X, checkpoint CT e inspeccion no intrusiva para entornos de alta demanda
               </p>
             </div>
             <div className="surface-card rounded-[2rem] p-6">
@@ -70,6 +70,11 @@ export default function BusinessLinesPage() {
                 </div>
 
                 <div className={index % 2 === 1 ? "lg:order-1" : undefined}>
+                  {line.slug === "inspeccion-no-intrusiva" ? (
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand">
+                      Linea prioritaria
+                    </p>
+                  ) : null}
                   <SectionEyebrow>{line.kicker}</SectionEyebrow>
                   <h2 className="mt-6 max-w-[12ch] font-display text-4xl leading-[0.95] tracking-[-0.045em] text-ink [text-wrap:balance] sm:text-5xl">
                     {line.label}
